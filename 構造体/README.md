@@ -259,3 +259,34 @@ https://programming.pc-note.net/c/struct3.html
 
 # 構造体のポインタ渡し
 
+# 要素数の取得
+
+```c
+#include<stdio.h>
+int main(void){
+int Count=0;
+typedef struct{
+	int no;
+	char *name;
+/*ポインタ変数にすることで文字列を格納できる。*/
+	int s_year;
+	char s_class;
+} OLD;
+
+OLD old[256]={
+	{1,"上杉謙信",3,'A'},
+	{2,"武田進言",3,'B'},
+	{3,"豊臣秀書",2,'C'},
+};
+
+for (int i = 0; i < 256; i++){
+	if(old[i].no==NULL){
+		Count=i;
+		break;
+	}
+}
+printf("%d",Count);
+return 0;
+}
+
+```
