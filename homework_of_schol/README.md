@@ -27,4 +27,10 @@ double ecord[256];
 
 メインとなるファイル=```main.c```
 
+読み込むcsvファイル=```read.csv```
+
+書き込むcsvファイル=```write.csv```
+
+
+
 
