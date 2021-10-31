@@ -7,7 +7,7 @@ extern char name[256][256];
 /*例*/
 name={"田中","斎藤","後藤"}
 char school[256][256];
-double ecord[256];
+double record[256];
 ```
 モードを選択を作る。
 
