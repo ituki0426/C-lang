@@ -31,6 +31,7 @@ double ecord[256];
 
 書き込むcsvファイル=```write.csv```
 
+関数のプロトタイプ宣言=``inc.h````
 
 
 
