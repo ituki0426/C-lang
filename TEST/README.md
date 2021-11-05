@@ -33,6 +33,39 @@ int f(int x){
 
 ![image](https://user-images.githubusercontent.com/82156802/140502410-a221e25c-59fe-4fdf-8b87-967a3ee482dd.png)
 
+例
+
+File1.c
+```c
+#include<stdio.h>
+int func(int);
+int main(void){
+	int a,b;
+	printf("Input a\n");
+	scanf("%d",&a);
+	b=func(a);
+	printf("m:a=%d,b=%d",a,b);
+	b = func(a);
+	printf("m:a=%d,b=%d\n",a,b);
+	return 0;
+}
+```
+
+File2.c
+
+```c
+#include<stdio.h>
+int func(int a){
+	int b=0;
+	a=a+1;
+	b=a+b;
+	printf("f:a=%d,b=%d\n",a,b);
+	return b;
+}
+```
+
+![image](https://user-images.githubusercontent.com/82156802/140503878-32efaf23-7733-4bc1-a5bf-ab7361a28e3f.png)
+
 # 外部変数
 
 ・ほかのブロックや関数、ファイルにある変数を使うときの宣言。
@@ -64,7 +97,48 @@ int f(int x){
 ・static：有効範囲を書いている部分に限定し、ほかのファイル等には見せないようにする。
 
 　→値は保持され続ける。
- 
+
+例
+File1.c
+```c
+#include <stdio.h>
+int func(int);
+
+int main(void){
+int a,b;
+printf("Input a¥n");
+scanf("%d", &a);
+b = func(a);
+printf("m:a=%d , b=%d¥n", a, b);
+b = func(a);
+printf("m:a=%d , b=%d¥n", a, b);
+return 0;
+}
+```
+
+File2.c
+
+```c
+#include <stdio.h>
+int func(int a){
+int b = 0;
+a = a + 1;
+b = a + b;
+printf("f:a=%d , b=%d¥n", a, b);
+return b;
+}
+```
+コンパイルする際は```gcc -o exe File1.c File2.c```
+のようにする。
+
+同時コンパイルすことで、リンクされる。
+
+結果
+![image](https://user-images.githubusercontent.com/82156802/140504313-81e5b052-f8b6-4f6f-ba5f-75e0e24e8c08.png)
+
+
+解説
+
 # コンパイルとリンクを分ける。
 
 # マクロ
