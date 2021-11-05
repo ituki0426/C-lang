@@ -43,10 +43,18 @@ int main(void){
 	int a,b;
 	printf("Input a\n");
 	scanf("%d",&a);
+	//a=3
 	b=func(a);
+	//f:a=4,b=4 が出力される。
+	//b=4となる。
 	printf("m:a=%d,b=%d",a,b);
+	//よって、m:a=3,b=4が出力される。
 	b = func(a);
+	//2回目のfuc()の呼び出しとなる。
+	//f:a=4,b=8が出力される。
+	//b=８となる。
 	printf("m:a=%d,b=%d\n",a,b);
+	//この関数の中では、常にa=3であるため、m:a=3,b=8が出力される。
 	return 0;
 }
 ```
@@ -57,15 +65,27 @@ File2.c
 #include<stdio.h>
 int func(int a){
 	static int b=0;
+	//1回目の呼び出しで、b=4となり、次に引きがれる。
+	//2回目の呼び出しでは、bの初期化は行われず、b=4のままで開始される。
 	a=a+1;
+	//2回目でもa=4となる。
 	b=a+b;
+	//2回目ではb=4+4となる。
+	//つまりb=8となる。
 	printf("f:a=%d,b=%d\n",a,b);
 	return b;
 }
 ```
 
 結果
-![image](https://user-images.githubusercontent.com/82156802/140504313-81e5b052-f8b6-4f6f-ba5f-75e0e24e8c08.png)
+
+```f:a=4,b=4```
+
+```m:a=3,b=4```
+
+```m:a=4,b=8```
+
+```f:a=3,b=8```
 
 解説
 
