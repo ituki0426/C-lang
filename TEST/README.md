@@ -56,7 +56,7 @@ File2.c
 ```c
 #include<stdio.h>
 int func(int a){
-	int b=0;
+	static int b=0;
 	a=a+1;
 	b=a+b;
 	printf("f:a=%d,b=%d\n",a,b);
@@ -65,8 +65,7 @@ int func(int a){
 ```
 
 結果
-
-![image](https://user-images.githubusercontent.com/82156802/140503878-32efaf23-7733-4bc1-a5bf-ab7361a28e3f.png)
+![image](https://user-images.githubusercontent.com/82156802/140504313-81e5b052-f8b6-4f6f-ba5f-75e0e24e8c08.png)
 
 解説
 
@@ -135,7 +134,7 @@ File2.c
 ```c
 #include <stdio.h>
 int func(int a){
-static b = 0;
+int b = 0;
 a = a + 1;
 b = a + b;
 printf("f:a=%d , b=%d¥n", a, b);
@@ -148,7 +147,8 @@ return b;
 同時コンパイルすことで、リンクされる。
 
 結果
-![image](https://user-images.githubusercontent.com/82156802/140504313-81e5b052-f8b6-4f6f-ba5f-75e0e24e8c08.png)
+
+![image](https://user-images.githubusercontent.com/82156802/140503878-32efaf23-7733-4bc1-a5bf-ab7361a28e3f.png)
 
 
 解説
