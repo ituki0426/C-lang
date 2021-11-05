@@ -64,7 +64,21 @@ int func(int a){
 }
 ```
 
+結果
+
 ![image](https://user-images.githubusercontent.com/82156802/140503878-32efaf23-7733-4bc1-a5bf-ab7361a28e3f.png)
+
+解説
+
+
+
+
+
+
+
+
+
+
 
 # 外部変数
 
@@ -121,7 +135,7 @@ File2.c
 ```c
 #include <stdio.h>
 int func(int a){
-int b = 0;
+static b = 0;
 a = a + 1;
 b = a + b;
 printf("f:a=%d , b=%d¥n", a, b);
