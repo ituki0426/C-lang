@@ -141,9 +141,11 @@ int main(void){
 int a,b;
 printf("Input a¥n");
 scanf("%d", &a);
-b = func(a);
-printf("m:a=%d , b=%d¥n", a, b);
-b = func(a);
+b = func(a);//1回目の呼び出し
+//return bなので、b=4となる。
+printf("m:a=%d , b=%d¥n", a, b);//a=3,b=4が出力される。
+b = func(a);//2回目の呼び出し//
+//1回目と何も変われないため、出力も同じになる。
 printf("m:a=%d , b=%d¥n", a, b);
 return 0;
 }
@@ -154,10 +156,12 @@ File2.c
 ```c
 #include <stdio.h>
 int func(int a){
-int b = 0;
+int b = 0; //呼び出されるたびに、b=0となる。
 a = a + 1;
 b = a + b;
 printf("f:a=%d , b=%d¥n", a, b);
+//1回目の呼び出し：a=3→a=4,b=4,よってf:a=4,b=4が出力される。
+//2回目の呼び出し
 return b;
 }
 ```
@@ -168,7 +172,7 @@ return b;
 
 結果
 
-
+![image](https://user-images.githubusercontent.com/82156802/141288993-18dcf86a-a1d6-458c-a6ec-1d125d1fa59b.png)
 
 解説
 
