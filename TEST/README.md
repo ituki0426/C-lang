@@ -168,7 +168,6 @@ return b;
 
 結果
 
-![image](https://user-images.githubusercontent.com/82156802/140503878-32efaf23-7733-4bc1-a5bf-ab7361a28e3f.png)
 
 
 解説
