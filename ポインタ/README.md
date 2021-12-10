@@ -129,6 +129,40 @@ int main(){
 	return 0;
 }
 ```
+
+## 配列とポインタの関係性
+
+```c
+#include<stdio.h>
+int main()
+{
+	int  a[5] = { 0, 1, 4, 9, 16 };	// 配列
+	int  *p;			// ポインタ
+	int  i;
+	for (i = 0; i < 5; i++) {	// 配列への直接アクセス
+		printf("a[%1d] : %d\n", i, a[i]);
+	}
+	printf("\n");
+	p = a;//ポインタpに配列を代入している。
+	for (i = 0; i < 5; i++) {	// 間接アクセス方法 #1
+		printf("p[%1d] : %d\n", i, p[i]);
+	}
+	printf("\n");
+	p = a;
+	for (i = 0; i < 5; i++) {	// 間接アクセス方法 #2
+		printf("*(p+%1d) : %d\n", i, *(p+i));
+	}
+	printf("\n");
+	p = a;
+	for (i = 0; i < 5; i++) {	// 間接アクセス方法 #3
+		printf("*p : %d\n", *p);
+		p++;
+	}
+	printf("\n");
+}	
+
+
+```
   
 ## ポインタを格納する配列（ポインタ配列）
 
