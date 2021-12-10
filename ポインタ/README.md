@@ -10,6 +10,29 @@
 ```c
 *(アドレス)=値;
 ```
+
+基本操作
+
+```c
+#include<stdio.h>
+int main()
+{
+	int x;
+	int *p;
+	printf("please in put word");
+	scanf("%d",&x);
+	p=&x;
+	printf("\n");
+	printf("x=%d\n",x);
+	printf("p=%d\n",*p);
+	printf("&x=%x\n",&x);
+	printf("p=%x",p);
+}	
+
+
+```
+
+
 とすることで、アドレスを用いて変数を代入することが出来る。
 # (2)ポインタを使う意味
 
