@@ -100,6 +100,35 @@ int main(void){
   ・
   ・
   ・
+
+## 関数の引数の引数に配列を用いる
+
+```c
+#include<stdio.h>
+#define SIZE 5
+void intArr(int *arr){
+	int i;
+	for(i=0;i<SIZE;i++){
+		arr[i]=456;
+	}
+
+}
+```
+
+```c
+#include<stdio.h>
+#define SIZE 5
+void intArr(int *arr);
+int main(){
+	int arr[SIZE];
+	int i;
+	intArr(arr);
+	for(i=0;i<SIZE;i++){
+		printf("%d ",arr[i]);
+	}
+	return 0;
+}
+```
   
 ## ポインタを格納する配列（ポインタ配列）
 
