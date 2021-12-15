@@ -1,3 +1,5 @@
+int Count(void);
+ 
 typedef struct student {
   char name[60];
   int gold;
@@ -15,5 +17,5 @@ void Write(STUDENT* argument){
     printf("銅メダル:%d ",argument[i].blonde);
     printf("\n");
   }
-  
+  for(i=O;i<columnumber)
 }
