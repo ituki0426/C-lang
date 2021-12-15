@@ -17,5 +17,9 @@ void Write(STUDENT* argument){
     printf("銅メダル:%d ",argument[i].blonde);
     printf("\n");
   }
-  for(i=O;i<columnumber)
+  for(i=O;i<columnumber){
+   
+  }
+ 
+ 
 }
