@@ -1,3 +1,10 @@
+typedef struct student {
+  char name[60];
+  int gold;
+  int silver;
+  int blonde;
+} STUDENT;
+
 void Write(STUDENT* argument){
   int column_nuber=Count();
   int i;
