@@ -63,6 +63,108 @@ int main(void){
 }
 ```
 
+## ポインタへの配列と配列のポインタの違い
+
+____________________________________________________________________________________________________________________________
+
+私たちは、配列のアドレスを格納できるポインタを作ることが出来る。この作られたポインタは、配列へのポインタと呼ばれる。
+
+配列へのポインタは、他次元配列を関数に渡す必要がある場合に役に立つ。
+一次元配列へのポインタの宣言
+
+```c
+data_type (*var_name)[size_of_array];
+```
+例
+
+```c
+int (*ptr)[5];
+```
+
+```c
+#include<stdio.h>
+#define ARRAY_SIZE 5
+int main()
+{
+    int arr[ARRAY_SIZE] = {1,2,3,4,5};
+    int i = 0;
+    // Pointer to an array of integers
+    int (*ptr)[ARRAY_SIZE];
+    // Points to the whole array arr.
+    ptr = &arr;
+    for(i=0; i< ARRAY_SIZE ; ++i)
+    {
+        printf(" arr[%d] = %d\n",i,(*ptr)[i]);
+    }
+    return 0;
+}
+```
+出力
+```
+arr[0]=1
+arr[1]=2
+arr[2]=3
+arr[3]=4
+arr[4]=5
+```
+
+
+配列は基本的に同じデータ型の要素をまとめます。滑都の要素の型は同じで、隣接売るメモリ位置に格納されている必要がある。よって、ポインタの配列を作成できます。これは主にポインタ変数の配列です。
+
+ポインタ配列の宣言
+```
+data_type *arrar_name[array_size];
+```
+例
+```c
+int *arr[5];
+```
+
+
+```c
+#include <stdio.h>
+int  main()
+{
+    int a = 10;
+    int b = 20;
+    int c = 30;
+    int i = 0;
+    // Creating an array of integer pointers
+    // and initializing it with integer variables address
+    int *arr[3] = {&a,&b,&c};
+    // printing values using pointer
+    for (i = 0; i < 3; ++i)
+    {
+        printf("Value of arr[%d] = %d\n", i, *arr[i]);
+    }
+    return 0;
+}
+```
+
+
+
+```c
+#include<stdio.h>
+#define ARRAY_SIZE 5
+int main()
+{
+    int arr[ARRAY_SIZE] = {1,2,3,4,5};
+    int *p;
+    //Pointer to an array of integers
+    int (*ptr)[ARRAY_SIZE];
+    //Points to the whole array arr.
+    ptr = &arr;
+    //Assign Array to pointer..
+    p = arr;
+    printf("p = 0x%p, ptr = 0x%p\n", p, ptr);
+    //increment pointer to an array and integer pointer
+    p++;
+    ptr++;
+    printf("p = 0x%p, ptr = 0x%p\n", p, ptr);
+    return 0;
+}
+```
+
 ## ポインタと配列の違い
 
 葉入れtの名前はその配列の先頭のアドレスを指します。しかし、ポインタと違って演算はできない。
