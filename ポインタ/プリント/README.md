@@ -156,9 +156,84 @@ R+1=6421988
 *(q)[0]=1
 *(q)[1]=3
 *(q)[2]=5
-*(q)[2]=7
+*(q)[3]=7
 *(f)[0]1
 *(f)[1]=4
 *(f)[2]=7
  ```
  
+# 配列のポインタ
+
+宣言
+
+```data_type *arrar_name[array_size];```
+
+例
+```c
+int *arr[5];
+```
+
+ここで```arr```は5つの整数ポインタの配列です。
+
+```c
+#include <stdio.h>
+int  main()
+{
+    int a = 10;
+    int b = 20;
+    int c = 30;
+    int i = 0;
+    // Creating an array of integer pointers
+    // and initializing it with integer variables address
+    int *arr[3] = {&a,&b,&c};
+    // printing values using pointer
+    for (i = 0; i < 3; ++i)
+    {
+        printf("Value of arr[%d] = %d\n", i, *arr[i]);
+    }
+    return 0;
+}
+```
+結果
+```
+```
+
+# ポインタへの配列とポインタ配列の違い
+
+```c
+#include<stdio.h>
+#define ARRAY_SIZE 5
+int main()
+{
+    int arr[ARRAY_SIZE] = {1,2,3,4,5};
+    int *p;
+    //Pointer to an array of integers
+    int (*ptr)[ARRAY_SIZE];
+    //Points to the whole array arr.
+    ptr = &arr;
+    //Assign Array to pointer..
+    p = arr;
+    printf("p = 0x%p, ptr = 0x%p\n", p, ptr);
+    //increment pointer to an array and integer pointer
+    p++;
+    ptr++;
+    printf("p = 0x%p, ptr = 0x%p\n", p, ptr);
+    return 0;
+}
+```
+
+結果
+```
+p = 0x0061FF04, ptr = 0x0061FF04
+p = 0x0061FF08, ptr = 0x0061FF18
+```
+pの型がint型のポインタであるのに対し、ptrの型はint型の要素を5つもつ配列へのポインタである。
+
+ポインタ演算は、ポインタ変数の型のサイズに対して実行される。
+
+よって、```ptr++```と書くと5×4で20バイト前方にシフトされる。
+
+また、```p++```
+と書くと4×1で4バイト前方にシフトする。
+
+
