@@ -271,6 +271,8 @@ int main()
 ![image](https://programming.pc-note.net/images/c/pointer4_2.png)
 
 ・文字列のポインタのメリット
+
+asdfasf3awefgafsd
 ・mo
 もzir元配列
 
