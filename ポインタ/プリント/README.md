@@ -236,7 +236,43 @@ pの型がint型のポインタであるのに対し、ptrの型はint型の要�
 また、```p++```
 と書くと4×1で4バイト前方にシフトする。
 # 文字列と配列
-# 2次元配列
+
+# ポインタと文字列
+
+ポインタを利用すれば、文字列は便利に扱うことが出来る。
+
+```c
+#include <stdio.h>
+
+int main()
+{
+    char str[] = "ABCD";
+    //char str[] = { 'A', 'B', 'C', 'D', '\0' };
+    
+    char *strP = "EFGH";
+
+    printf("%s\n", str); //ABCD
+    printf("%s\n", strP); //EFGH
+
+    getchar();
+}
+```
+
+文字列リテラルは、プログラムの実行開始かメモリ上に存在する　上に存在する。配列の初期値に文字列リテラルを指定すると、その文字列分の長さ（プラスNULL文字）のサイズを持つ配列が自動で生成され、そこに一文字ずつ値がコピーされる。
+
+![image](https://programming.pc-note.net/images/c/pointer4_1.png)
+
+8行目のコード
+```char *strP = "EFGH";```
+に着目する。
+
+文字列リテラルを評価すると、その文字列リテラルの先頭アドレス（char型のポインタ）が返ってくる。
+
+![image](https://programming.pc-note.net/images/c/pointer4_2.png)
+
+・文字列のポインタのメリット
+・mo
+もzir元配列
 
 ・2次元配列の要素へのアクセスの方法
 
