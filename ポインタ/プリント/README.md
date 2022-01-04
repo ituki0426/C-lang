@@ -466,3 +466,83 @@ printf("*(q+%d)=%d¥t",i,(q+i));
 return 0;
 }
 ```
+# 構造体のポインタ渡し
+
+構造体は、そのまま関数の引数にして渡すことが出来る。
+
+この場合、関数に渡されるのは構造体変数をコピーしたものです。
+
+```c
+#include <stdio.h>
+
+#define NAME_LENGTH 50
+
+typedef struct
+{
+    char name[NAME_LENGTH];
+    int age;
+    char gender;
+} Person;
+
+void PrintPerson(Person *p)
+{
+    printf("name: %s\n", (*p).name);
+    printf("age: %d\n", (*p).age);
+    printf("gender: %d\n", (*p).gender);
+}
+
+int main()
+{
+    Person person = { "A山B男", 20, 0 };
+    PrintPerson(&person);
+
+    getchar();
+}
+```
+
+関数内で構造体のポインタ変数にアクセスするには、丸括弧でポインタ変数をかこったうえでアドレス演算子を記述する。
+
+```c
+//メンバ変数にアクセス
+(*p).name
+
+//これはNG
+*p.name
+
+//↑はこのような意味になってしまう
+*(p.name)
+```
+
+・アロー演算子
+
+メンバ変数にアクセスするたびに上記のように書くのは面倒なので、別の記述方法が用意されている；
+
+```c
+#include <stdio.h>
+
+#define NAME_LENGTH 50
+
+typedef struct
+{
+    char name[NAME_LENGTH];
+    int age;
+    char gender;
+} Person;
+
+void PrintPerson(Person *p)
+{
+    printf("name: %s\n", p->name);
+    printf("age: %d\n", p->age);
+    printf("gender: %d\n", p->gender);
+}
+
+int main()
+{
+    Person person = { "A山B男", 20, 0 };
+    PrintPerson(&person);
+
+    getchar();
+}
+
+```
+
