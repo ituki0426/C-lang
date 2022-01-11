@@ -147,6 +147,42 @@ t[5]=6
 &t[4]=6422016
 &t[5]=6422020
  ```
+ # 配列のポインタを用いた2次元配列の受け渡し
+ ```c
+ #include<stdio.h>
+int Print_array(int (*p)[3]){
+	int *q=(int *)p;
+	for(int i=0;i<9;i++){
+		printf("%d\n",q[i]);
+	}
+}
+int main(void){
+	int array[3][3]={{0,1,2},{3,4,5},{6,7,8}};
+	Print_array(array);
+}
+
+ ```
+ 以下のようにして値を書き換えることもできる。
+ ```c
+ #include<stdio.h>
+int Change_array(int (*p)[3]){
+	int *q=(int *)p;
+	for(int i=0;i<9;i++){
+		q[i]=0;//キャストしたポインタ変数を用いて値を書き換えている。
+	}
+}
+int main(void){
+	int array[3][3]={{0,1,2},{3,4,5},{6,7,8}};
+	int *q=(int *)array;
+	Change_array(array);
+	for(int i=0;i<8;i++){
+		printf("%d\n",q[i]);
+	}
+}
+
+ ```
+ また、上のように2次元配列をint型のポインタにキャストして、それを表示することもできる。
+ しかも、キャストした変数を用いて値も書き換えられる。
  # 間接演算子と添え字演算子
  
  以下のように宣言する。
