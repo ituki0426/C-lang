@@ -673,3 +673,38 @@ struct 構造体タグ名 構造体変数名;
 ```
 - メモリ上では各メンバが連続して順番に確保される。
 構造体の初期化
+```c
+struct {
+char item[20];
+int price;
+
+} ST;
+struct ST u ={“name” , 1280};
+```
+# 構造体の一括宣言
+```c
+struct ST {
+
+char item[20];
+int price;
+
+} st;
+```
+# 構造体の参照
+
+構造体変数の中のメンバを操作するには```構造体変数名.メンバ名とする(ドット演算子)```
+```c
+struct GOODS{
+
+char name[20];
+int price;
+int stock;
+
+} g;
+g.price = 1200;
+g.stock = 10;
+strcpy (g.name , “Syouhinnmei”);
+```
+
+# 構造体同士の代入
+
