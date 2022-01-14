@@ -741,5 +741,55 @@ return 0;
 ```
 
 ```c
+#include<stdio.h>
+#include<string.h>
+typedef struct PLC{
+	char name[100];
+	int i;
+	double d;
+} PL;
+//プロトタイプ宣言
+int show_s2(PL *pS, char *c);
+int swap_st(PL *pS, PL *pT);
+int main(void){
+	PL pl1,pl2;//初期化
+	strcpy(pl1.name,"No1");
+	pl1.i=5; pl1.d=3.3;
+	strcpy(&pl2.name[0],"No2");
+	pl2.i=25;pl2.d=42.1;
+	show_s2(&pl1,"before");
+	show_s2(&pl2,"before");
+	swap_st(&pl1,&pl2);
+	show_s2(&pl1,"after");
+	show_s2(&pl2,"after");
+    return 0;
+
+}
+/*値渡し*/
+/*参照渡し*/
+int show_s2(PL *pS, char *c){ 
+	printf("(%s) name: %s i: %d, d:%f\n", c,pS->name, pS->i, pS->d);
+	return 0;
+}
+int swap_st(PL *pS, PL *pT){
+	char name[256];
+	int i;
+	double d;
+
+	strcpy(name,pS->name);
+	i=pS->i;
+	d=pS->d;
+
+	strcpy(pS->name,pT->name);
+	pS->i=pT->i;
+	pS->d=pT->d;
+
+	strcpy(pT->name,name);
+	pT->i=i;
+	pT->d=d;
+}
+```
+
+```c
 
 ```
