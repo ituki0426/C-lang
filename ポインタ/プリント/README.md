@@ -793,3 +793,78 @@ int swap_st(PL *pS, PL *pT){
 ```c
 
 ```
+# 構造体と配列
+構造体配列のメンバにアクセスする方法
+pM=構造体を参照しているポインタ変数
+
+```c
+(pM+i)->avg//pMが参照している配列i番目の、avgというメンバにアクセスしている。
+*(pM+i).avg
+```
+例
+```c
+#include<stdio.h>
+#define NUM 3
+typedef struct Member{
+	double avg;
+	int hr;
+} MEMBER;
+int show_member(MEMBER *pT,char *str);
+
+int main(void){
+	MEMBER team[NUM];
+	team[0].avg = 0.275; team[0].hr = 14;
+    team[1].avg = 0.288; team[1].hr = 21;
+    team[2].avg = 0.305; team[2].hr = 29; 
+	show_member(team,"HOME");
+	return 0;
+}
+
+int show_member(MEMBER *pM,char *str){
+	int i=0;
+	printf("------ %s ------\n",str);
+	for(i=0;i<NUM;i++){
+		printf("[%d] avg %5.3f : HR %d\n",i,(pM+i)->avg,(*(pM+i)).hr);
+	}
+	return 0;
+}
+```
+
+構造体のリスト構造
+```c
+#include<stdio.h>
+#define NUM 3
+typedef struct Member{
+	double avg;
+	int hr;
+	struct Member *next;
+} MEMBER;
+int show_member(MEMBER *pT,char *str);
+
+int main(void){
+	MEMBER team[NUM];
+	MEMBER *pT;
+	team[0].avg = 0.275; team[0].hr = 14;
+    team[1].avg = 0.288; team[1].hr = 21;
+    team[2].avg = 0.305; team[2].hr = 29; 
+	team[0].next=&team[1];
+	team[1].next=&team[2];
+	team[2].next=NULL;
+
+	for(pT=&team[0];pT->next!=NULL;pT=pT->next){
+		printf("Avg:%5.3f HR:%d\n",pT->avg,pT->hr);
+	}
+	printf("Avg:%5.3f HR:%d\n", pT->avg, pT->hr);
+	return 0;
+}
+
+int show_member(MEMBER *pM,char *str){
+	int i=0;
+	printf("------ %s ------\n",str);
+	for(i=0;i<NUM;i++){
+		printf("[%d] avg %5.3f : HR %d\n",i,(pM+i)->avg,(*(pM+i)).hr);
+	}
+	
+	return 0;
+}
+```
