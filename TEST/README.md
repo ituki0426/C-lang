@@ -243,6 +243,8 @@ fgetc():ファイルから1文字入力する
 
 ・fgetsの第2引数で、文字数を指定することが出来る。
 
+NUM-1
+
 fgets(文字列,NUM,FILE_POITER)
 ```c
 #include<stdio.h>
