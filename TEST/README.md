@@ -160,7 +160,10 @@ int main(void){
 
  (pM+i)->avg = (*(pM+i)).avg 
  
- ```c
+
+## 構造体のリスト
+```c
+```c
  #include <stdio.h>
 #define NUM 3
 typedef struct Member {    /*Member は省略できる*/
@@ -192,5 +195,5 @@ int show_list(MEMBER *start, char *str){
         return 0;
 }
  ```
-
+```
 # ファイル入力出力で気を付けること
