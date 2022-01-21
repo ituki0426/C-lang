@@ -195,7 +195,7 @@ int show_list(MEMBER *start, char *str){
         return 0;
 }
  ```
-```
+
 # ファイル入力出力で気を付けること
 
 ## 1.ファイルに書き込む(出力)
