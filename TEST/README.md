@@ -115,8 +115,7 @@ int main(void){
                 }
 
 int f(int (*p)[2]){
-    int i,j,*q;
-    q = (int *)p;
+    int i,j;
     for(i=0;i<3;i++){
         for(j=0;j<2;j++){
             printf("*(*(p+%d)+%d)=%d\n",i,j,*(*(p+i)+j));}
