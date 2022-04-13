@@ -83,7 +83,7 @@ int main(int argc, char **argv) {
 }
 
 ```
-## (3)main関数
+## (3)editorOpen関数
 ```c
 int editorOpen(char *filename) {
     FILE *fp;
@@ -119,6 +119,29 @@ int editorOpen(char *filename) {
     fclose(fp);
     E.dirty = 0;
     return 0;
+}
+```
+## (4)editorInsertRow
+editorInsertRowは、(3)editorOpen関数で読み込んだ行を書き込む関数
+```c
+void editorInsertRow(int at, char *s, size_t len) {
+    if (at > E.numrows) return;
+    E.row = realloc(E.row,sizeof(erow)*(E.numrows+1));
+    if (at != E.numrows) {
+        memmove(E.row+at+1,E.row+at,sizeof(E.row[0])*(E.numrows-at));
+        for (int j = at+1; j <= E.numrows; j++) E.row[j].idx++;
+    }
+    E.row[at].size = len;
+    E.row[at].chars = malloc(len+1);
+    memcpy(E.row[at].chars,s,len+1);
+    E.row[at].hl = NULL;
+    E.row[at].hl_oc = 0;
+    E.row[at].render = NULL;
+    E.row[at].rsize = 0;
+    E.row[at].idx = at;
+    editorUpdateRow(E.row+at);
+    E.numrows++;
+    E.dirty++;
 }
 ```
 ## (4)initEditor
