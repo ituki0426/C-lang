@@ -3,20 +3,30 @@
 ### ➀
 ```c
 struct editorConfig {
-    int cx,cy;  /* Cursor x and y position in characters */
-    int rowoff;     /* Offset of row displayed. */
-    int coloff;     /* Offset of column displayed. */
-    int screenrows; /* Number of rows that we can show */
-    int screencols; /* Number of cols that we can show */
-    int numrows;    /* Number of rows */
-    int rawmode;    /* Is terminal raw mode enabled? */
-    erow *row;      /* Rows */
-    int dirty;      /* File modified but not saved. */
-    char *filename; /* Currently open filename */
+     /* Cursor x and y position in characters */
+    int cx,cy;  
+     /* Offset of row displayed. */
+    int rowoff;  
+    /* Offset of column displayed. */
+    int coloff; 
+    /* Number of rows that we can show */
+    int screenrows; 
+     /* Number of cols that we can show */
+    int screencols;
+     /* Number of rows */
+    int numrows;
+    /* Is terminal raw mode enabled? */
+    int rawmode;
+    /* Rows */
+    erow *row;
+    /* File modified but not saved. */
+    int dirty;      
+    /* 開いたファイルの名前。editorOpen()で設定する。*/
+    char *filename;
     char statusmsg[80];
     time_t statusmsg_time;
 };
-
+/*E.numrowsなどの形で使うことが出来る。*/
 static struct editorConfig E;
 ```
 
@@ -79,12 +89,15 @@ int editorOpen(char *filename) {
     FILE *fp;
 
     E.dirty = 0;
+    
+    /*ファイルの名前を設定している。*/
     free(E.filename);
     size_t fnlen = strlen(filename)+1;
     E.filename = malloc(fnlen);
     memcpy(E.filename,filename,fnlen);
 
     fp = fopen(filename,"r");
+    
     if (!fp) {
         if (errno != ENOENT) {
             perror("Opening file");
@@ -99,11 +112,28 @@ int editorOpen(char *filename) {
     while((linelen = getline(&line,&linecap,fp)) != -1) {
         if (linelen && (line[linelen-1] == '\n' || line[linelen-1] == '\r'))
             line[--linelen] = '\0';
+        /*ファイルの内容をセットしている*/
         editorInsertRow(E.numrows,line,linelen);
     }
     free(line);
     fclose(fp);
     E.dirty = 0;
     return 0;
+}
+```
+## (4)initEditor
+
+構造体```E```を初期化している。
+```c
+void initEditor(void) {
+    E.cx = 0;
+    E.cy = 0;
+    E.rowoff = 0;
+    E.coloff = 0;
+    E.numrows = 0;
+    E.row = NULL;
+    E.dirty = 0;
+    E.filename = NULL;
+    updateWindowSize();
 }
 ```
