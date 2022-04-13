@@ -1,6 +1,6 @@
 ## (1)使用する構造体、列挙体
 
-### ➀
+### ➀構造体:editorConfig
 ```c
 struct editorConfig {
      /* Cursor x and y position in characters */
@@ -30,7 +30,7 @@ struct editorConfig {
 static struct editorConfig E;
 ```
 
-### ➁
+### ➁列挙体:KEY_ACTION
 ```c
 enum KEY_ACTION{
         KEY_NULL = 0,       /* NULL */
