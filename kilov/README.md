@@ -144,7 +144,7 @@ void editorInsertRow(int at, char *s, size_t len) {
     E.dirty++;
 }
 ```
-## (4)initEditor
+## (5)initEditor
 
 構造体```E```を初期化している。
 ```c
