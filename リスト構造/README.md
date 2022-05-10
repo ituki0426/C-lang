@@ -52,3 +52,5 @@ void add_car2(Car *p,int n,double g){
 結果は以下のようになる
 
 ![image](https://user-images.githubusercontent.com/82156802/167529999-9d402159-2057-4329-9660-610bfa307ea2.png)
+
+つまり、1、４、３、２，の順で連結されていく
