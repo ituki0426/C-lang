@@ -45,7 +45,11 @@ void add_car2(Car *p,int n,double g){
     new->num=n;
     new->gas=g;
 	new->next=p->next;
+	//1回目の呼び出しではnew1->nextにはNULLが入る
+　　　　 //2回目の呼び出しではnew2->nextにはp->next、つまりnew1が入る
 	p->next=new;
+	//1回目の呼び出しではp->nextにはnew1が入る
+　　　　//2回目の呼び出しではp->nextにはnew2が入る
 }
 
 ```
