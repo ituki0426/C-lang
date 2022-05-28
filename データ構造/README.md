@@ -57,7 +57,9 @@ int fact(int n){
 ```
 
 # アルゴリズム
-##
+
+## 入力した数字を下の桁から表示する
+
 ##
 
 # ソート
@@ -111,4 +113,57 @@ int main(void){
 	for(i=0;i<NUM;i++)
 	    printf("%d ",data[i]);
 }
-``
+```
+
+# 内部表現
+
+## 入力された値をビット単位で表示する
+```c
+#include <stdio.h>
+//2進数表記で、「1」の数を返す
+int count_bits(unsigned int x){
+	int count=0;
+	while (x){//xが0でない限り繰り返す
+		if(x & 1U) count++;
+		x >>= 1;//xを右に1ビットシフトしている。
+	}
+	return count;
+}
+int int_bits(void){
+	return(count_bits(~0U));//~0Uは全ビットが1のunsigned int型整数
+}
+//unsigned int型のビット内容を表示
+void print_bits(unsigned int x){
+	int i;
+	for(i=int_bits()-1;i>=0;i--){
+		if((x>>i) & 1U){
+			putchar('1');
+		}else{
+			putchar('0');
+		}
+	}
+}
+int main(void){
+	unsigned int na;
+	scanf("%u",&na);//%uはunsigned型の変換指定子
+	printf("A="); print_bits(na); printf("\n");
+}
+```
+## unsigned int型を左右にnビットシフトした値
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
