@@ -37,6 +37,24 @@ int main(void){
 	}
 }
 ```
+## nの階乗を求める
+
+```c
+#include <stdio.h>
+int fact(int n);
+int main(void){
+	printf("%d",fact(3));
+}
+int fact(int n){
+	int fac;
+	if(n==0){
+		return 1;
+	}else{
+		fac=n*fact(n-1);
+		return fac;
+	}
+}
+```
 
 # アルゴリズム
 ##
